@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import '/src/styles/null';
+@import '/src/styles/header';
+
+
+.wrapper {
+	// display: none;
+	background-color: rgb(255, 255, 255);
+	max-width: 1080px;
+	margin: 0 auto;
+	min-height: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
+	border-radius: 20px;
+}
+.btn {
+	background: #9DD558;
+	border-radius: 18px;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 19px;
+	text-align: center;
+	width: 100%;
+	color: #fff;
+	padding: 15px 0;
+	display: inline-flex;
+	justify-content: center;
+	transition: all 0.3s ease 0s;
+	&:hover {
+		background: #5d7c37;
+	}
+}
+// ---------------------------------------------------------------
+.sneakers {
+	margin-top: 39px;
+	margin-bottom: 50px;
+	// .sneakers__items
+	&__container {
+		max-width: 960px;
+		margin: 0 auto;
+		padding: 0 15px;
+	}
+	&__items {
+		display: flex;
+		padding-bottom: 30px;
+		justify-content: space-between;
+		align-items: center;
+	}
+	&__card {
+		display: flex;
+		gap: 30px;
+		flex-wrap: wrap;
+	}
+	// .sneakers__title
+	&__title {
+		font-weight: 700;
+		font-size: 32px;
+		line-height: 39px;
+		color: #000000;
+	}
+	// .sneakers__input
+	&__input {
+		border: 1px solid #F3F3F3;
+		border-radius: 10px;
+		display: flex;
+		align-items: center;
+		padding: 10px 10px;
+		input {
+			width: 200px;
+			font-family: inter;
+			padding: 0 10px;
+			font-style: normal;
+			font-weight: 400;
+			font-size: 14px;
+			line-height: 17px;
+			color: #C4C4C4;
+			&::placeholder {
+				color: #a5a5a5;
+			}
+		}
+		&__search {
+			height: 15px;
+			width: 15px;
+		}
+	}
+	&__del {
+		cursor: pointer;
+		width: 18px;
+		height: 18px;
+	}
+}
