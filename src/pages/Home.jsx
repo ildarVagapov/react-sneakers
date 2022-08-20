@@ -9,7 +9,25 @@ function Home({
 	onAddToDrawer,
 	onAddToFavorite,
 	itemsDrawer,
+	isLoading,
 }) {
+
+	const renderItems = () => {
+		const failteredItems = items.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()));
+		{
+			return (isLoading ? [...Array(8)] : failteredItems).map((item, index) => (
+				<Card
+					added={itemsDrawer.some(obj => Number(obj.id) == Number(item.id))}
+					key={index}
+					onFavorite={(obj) => onAddToFavorite(obj)}
+					onPlus={(obj) => onAddToDrawer(obj)}
+					loading={isLoading}
+					{...item}
+				/>
+			))
+		}
+
+	}
 	return (
 		<div className="sneakers">
 			<div className="sneakers__container">
@@ -27,15 +45,7 @@ function Home({
 					</div>
 				</div>
 				<div className="sneakers__card">
-					{items.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase())).map((item, index) => (
-						<Card
-							added={itemsDrawer.some(obj => Number(obj.id) == Number(item.id))}
-							key={index}
-							onFavorite={(obj) => onAddToFavorite(obj)}
-							onPlus={(obj) => onAddToDrawer(obj)}
-							{...item}
-						/>
-					))}
+					{renderItems()}
 				</div>
 			</div>
 		</div>

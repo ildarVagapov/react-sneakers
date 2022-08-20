@@ -6,7 +6,7 @@ const Header = (props) => {
 		<header className="header">
 			<div className="header__container">
 				<div className="header__body">
-					<Link to='/'>
+					<Link to='/react-sneakers '>
 						<a href="#" className="header__logo logo-header">
 							<img src="img/header/header__logo.png" alt="" className="logo-header__img" />
 							<div className="logo-header__items">

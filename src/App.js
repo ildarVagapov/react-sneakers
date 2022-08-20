@@ -15,6 +15,7 @@ function App() {
 	const [itemsDrawer, setItemsDrawer] = React.useState([]);
 	const [searchValue, setSearchValue] = React.useState('');
 	const [favorites, setFavorites] = React.useState([]);
+	const [isLoading, setIsLoading] = React.useState(true);
 
 	// получаем данные из API
 	React.useEffect(() => {
@@ -22,7 +23,7 @@ function App() {
 			const cartResponse = await axios.get("https://62f0d7efe2bca93cd23e1abb.mockapi.io/drawer");
 			const favoritesResponse = await axios.get("https://62f0d7efe2bca93cd23e1abb.mockapi.io/favorites");
 			const itemsResponse = await axios.get("https://62f0d7efe2bca93cd23e1abb.mockapi.io/items");
-
+			setIsLoading(false);
 			setItemsDrawer(cartResponse.data);
 			setFavorites(favoritesResponse.data);
 			setItems(itemsResponse.data);
@@ -72,7 +73,7 @@ function App() {
 
 			{drawerOpened && <Drawer items={itemsDrawer} onCloseDrawer={() => setDrawerOpened(false)} onRemove={onRemoveItem} />}
 			< Routes >
-				<Route path='/' element={
+				<Route path='/react-sneakers' element={
 					<Home
 						items={items}
 						itemsDrawer={itemsDrawer}
@@ -81,6 +82,7 @@ function App() {
 						onChangeSearchInput={onChangeSearchInput}
 						onAddToFavorite={onAddToFavorite}
 						onAddToDrawer={onAddToDrawer}
+						isLoading={isLoading}
 					/>
 				}>
 				</Route>
