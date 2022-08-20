@@ -10,7 +10,7 @@ const Drawer = ({ onCloseDrawer, onRemove, items = [] }) => {
 						Корзина
 					</div>
 					<button onClick={onCloseDrawer}>
-						<img src="/img/Card/add.svg" alt="" />
+						<img src="img/Card/add.svg" alt="" />
 					</button>
 				</div>
 				<div className="drawer__items">
@@ -24,7 +24,7 @@ const Drawer = ({ onCloseDrawer, onRemove, items = [] }) => {
 							<button>
 								<img
 									onClick={() => onRemove(obj.id)}
-									src="/img/Cart/delete.svg"
+									src="img/Cart/delete.svg"
 									alt="Remove"
 									className="item-drawer__delete" />
 							</button>
@@ -37,11 +37,6 @@ const Drawer = ({ onCloseDrawer, onRemove, items = [] }) => {
 						<div className="footer-drawer__border"></div>
 						<div className='footer-drawer__num' > 0 </div>
 					</div>
-					{/* <div className="footer-drawer__item">
-						<div className="footer-drawer__text">Налог: </div>
-						<div className="footer-drawer__border"></div>
-						<div className='footer-drawer__num' >21 400</div>
-					</div> */}
 					<button className="footer-drawer__btn btn">Оформить заказ</button>
 				</div>
 			</div>

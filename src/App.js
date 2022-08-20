@@ -2,7 +2,8 @@ import Header from "./components/Header";
 import Drawer from "./components/Drawer";
 import React from "react";
 import axios from "axios";
-import { Route } from 'react-router-dom';
+// import { Route } from 'react-router-dom';
+import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Favorite from "./pages/Favorite";
 
@@ -64,27 +65,32 @@ function App() {
 	};
 
 	return (
+
 		<div className="wrapper">
 
 			<Header onClickDrawer={() => setDrawerOpened(true)} />
 
 			{drawerOpened && <Drawer items={itemsDrawer} onCloseDrawer={() => setDrawerOpened(false)} onRemove={onRemoveItem} />}
+			< Routes >
+				<Route path='/' element={
+					<Home
+						items={items}
+						itemsDrawer={itemsDrawer}
+						searchValue={searchValue}
+						setSearchValue={setSearchValue}
+						onChangeSearchInput={onChangeSearchInput}
+						onAddToFavorite={onAddToFavorite}
+						onAddToDrawer={onAddToDrawer}
+					/>
+				}>
+				</Route>
 
-			<Route path='' exect>
-				<Home
-					items={items}
-					itemsDrawer={itemsDrawer}
-					searchValue={searchValue}
-					setSearchValue={setSearchValue}
-					onChangeSearchInput={onChangeSearchInput}
-					onAddToFavorite={onAddToFavorite}
-					onAddToDrawer={onAddToDrawer}
-				/>
-			</Route>
+				<Route path='/Favorite' element={
+					<Favorite items={favorites} onAddToFavorite={onAddToFavorite} />
+				}>
+				</Route>
+			</ Routes >
 
-			<Route path='Favorite' exect>
-				<Favorite items={favorites} onAddToFavorite={onAddToFavorite} />
-			</Route>
 		</div >
 	);
 }

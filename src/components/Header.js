@@ -8,8 +8,7 @@ const Header = (props) => {
 				<div className="header__body">
 					<Link to='/'>
 						<a href="#" className="header__logo logo-header">
-							{/* <img src="/img/header/header__logo.png" alt="" className="logo-header__img" /> */}
-							<img src="/img/header/header__logo.png" alt="" className="logo-header__img" />
+							<img src="img/header/header__logo.png" alt="" className="logo-header__img" />
 							<div className="logo-header__items">
 								<div className="logo-header__title">
 									REACT SNEAKERS
@@ -22,13 +21,13 @@ const Header = (props) => {
 					</Link>
 					<div className="header__items">
 						<div onClick={props.onClickDrawer} className="header__bascet bascet-header">
-							<img className="bascet-header__img" src="/img/header/header__bascet.svg" alt="" />
+							<img className="bascet-header__img" src="img/header/header__bascet.svg" alt="" />
 							<div className="bascet-header__text">0 руб.</div>
 						</div>
 						<Link to='/Favorite'>
-							<img src="/img/header/header__favorite.svg" alt="" className="header__favorite" />
+							<img src="img/header/header__favorite.svg" alt="" className="header__favorite" />
 						</Link>
-						<img src="/img/header/header__user.svg" alt="" className="header__user" />
+						<img src="img/header/header__user.svg" alt="" className="header__user" />
 					</div>
 				</div>
 			</div>

@@ -20,7 +20,7 @@ const Card = ({ id, title, imageUrl, price, onPlus, onFavorite, favorited = fals
 		<div className={styleCard.card}>
 			<img src={imageUrl} alt="" className={styleCard.card__img} />
 			<button>
-				<img onClick={addClickFavorite} src={isFavorite ? "/img/Card/favorite__active.svg" : "/img/Card/favorite.svg"} alt="" className={styleCard.card__favorite} />
+				<img onClick={addClickFavorite} src={isFavorite ? "img/Card/favorite__active.svg" : "img/Card/favorite.svg"} alt="" className={styleCard.card__favorite} />
 			</button>
 			<div className={styleCard.card__title}>{title}</div>
 			<div className={styleCard.card__items}>
@@ -29,7 +29,7 @@ const Card = ({ id, title, imageUrl, price, onPlus, onFavorite, favorited = fals
 					<span className={styleCard.card__num}>{price}</span>
 				</div>
 				<button onClick={addClickPlus}>
-					<img className={styleCard.card__add} src={isAdded ? "/img/Card/add__active.svg" : "/img/Card/add.svg"} alt="add" />
+					<img className={styleCard.card__add} src={isAdded ? "img/Card/add__active.svg" : "img/Card/add.svg"} alt="add" />
 				</button>
 			</div>
 		</div>
