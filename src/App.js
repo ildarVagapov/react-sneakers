@@ -70,7 +70,7 @@ function App() {
 
 			{drawerOpened && <Drawer items={itemsDrawer} onCloseDrawer={() => setDrawerOpened(false)} onRemove={onRemoveItem} />}
 
-			<Route path='/' exect>
+			<Route path='' exect>
 				<Home
 					items={items}
 					itemsDrawer={itemsDrawer}
@@ -82,7 +82,7 @@ function App() {
 				/>
 			</Route>
 
-			<Route path='/Favorite' exect>
+			<Route path='Favorite' exect>
 				<Favorite items={favorites} onAddToFavorite={onAddToFavorite} />
 			</Route>
 		</div >

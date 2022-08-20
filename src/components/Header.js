@@ -8,6 +8,7 @@ const Header = (props) => {
 				<div className="header__body">
 					<Link to='/'>
 						<a href="#" className="header__logo logo-header">
+							{/* <img src="/img/header/header__logo.png" alt="" className="logo-header__img" /> */}
 							<img src="/img/header/header__logo.png" alt="" className="logo-header__img" />
 							<div className="logo-header__items">
 								<div className="logo-header__title">
