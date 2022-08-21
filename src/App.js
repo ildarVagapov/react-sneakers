@@ -2,11 +2,10 @@ import Header from "./components/Header";
 import Drawer from "./components/Drawer";
 import React from "react";
 import axios from "axios";
-// import { Route } from 'react-router-dom';
+import AppContext from './context';
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Favorite from "./pages/Favorite";
-
 
 
 function App() {
@@ -56,6 +55,7 @@ function App() {
 		try {
 			if (favorites.find(favObj => favObj.id == obj.id)) {
 				axios.delete(`https://62f0d7efe2bca93cd23e1abb.mockapi.io/favorites/${obj.id}`)
+				setFavorites((prev) => prev.filter((item) => Number(item.id) !== Number(obj.id)));
 			} else {
 				const { data } = await axios.post('https://62f0d7efe2bca93cd23e1abb.mockapi.io/favorites', obj)
 				setFavorites(prev => [...prev, data]);
@@ -65,35 +65,46 @@ function App() {
 		}
 	};
 
+	const isItemAdded = (id) => {
+		return itemsDrawer.some((obj) => Number(obj.id) === Number(id));
+	};
+
+
 	return (
+		<AppContext.Provider value={{
+			items,
+			itemsDrawer,
+			favorites,
+			isItemAdded,
+			onAddToFavorite,
+		}}>
+			<div className="wrapper">
 
-		<div className="wrapper">
+				<Header onClickDrawer={() => setDrawerOpened(true)} />
 
-			<Header onClickDrawer={() => setDrawerOpened(true)} />
+				{drawerOpened && <Drawer items={itemsDrawer} onCloseDrawer={() => setDrawerOpened(false)} onRemove={onRemoveItem} />}
 
-			{drawerOpened && <Drawer items={itemsDrawer} onCloseDrawer={() => setDrawerOpened(false)} onRemove={onRemoveItem} />}
-			< Routes >
-				<Route path='/react-sneakers' element={
-					<Home
-						items={items}
-						itemsDrawer={itemsDrawer}
-						searchValue={searchValue}
-						setSearchValue={setSearchValue}
-						onChangeSearchInput={onChangeSearchInput}
-						onAddToFavorite={onAddToFavorite}
-						onAddToDrawer={onAddToDrawer}
-						isLoading={isLoading}
-					/>
-				}>
-				</Route>
-
-				<Route path='/Favorite' element={
-					<Favorite items={favorites} onAddToFavorite={onAddToFavorite} />
-				}>
-				</Route>
-			</ Routes >
-
-		</div >
+				< Routes >
+					<Route path='/react-sneakers' element={
+						<Home
+							items={items}
+							itemsDrawer={itemsDrawer}
+							searchValue={searchValue}
+							setSearchValue={setSearchValue}
+							onChangeSearchInput={onChangeSearchInput}
+							onAddToFavorite={onAddToFavorite}
+							onAddToDrawer={onAddToDrawer}
+							isLoading={isLoading}
+						/>
+					}>
+					</Route>
+					<Route path='/Favorite' element={
+						<Favorite />
+					}>
+					</Route>
+				</ Routes >
+			</div >
+		</AppContext.Provider>
 	);
 }
 export default App; 

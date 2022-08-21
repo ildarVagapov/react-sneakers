@@ -1,3 +1,4 @@
+import React from 'react';
 import Card from "../components/Card";
 
 
@@ -8,16 +9,16 @@ function Home({
 	onChangeSearchInput,
 	onAddToDrawer,
 	onAddToFavorite,
-	itemsDrawer,
 	isLoading,
 }) {
 
+
 	const renderItems = () => {
 		const failteredItems = items.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()));
+
 		{
 			return (isLoading ? [...Array(8)] : failteredItems).map((item, index) => (
 				<Card
-					added={itemsDrawer.some(obj => Number(obj.id) == Number(item.id))}
 					key={index}
 					onFavorite={(obj) => onAddToFavorite(obj)}
 					onPlus={(obj) => onAddToDrawer(obj)}

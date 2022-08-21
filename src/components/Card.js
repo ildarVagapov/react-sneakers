@@ -1,10 +1,20 @@
-import styleCard from '../styles/Card.module.scss'
 import React from 'react';
+import styleCard from '../styles/Card.module.scss'
 import ContentLoader from 'react-content-loader';
+import AppContext from '../context';
 
-const Card = ({ id, title, imageUrl, price, onPlus, onFavorite, favorited = false, added = false, loading = false }) => {
 
-	const [isAdded, setIsAdded] = React.useState(added);
+const Card = ({
+	id,
+	title,
+	imageUrl,
+	price,
+	onPlus,
+	onFavorite,
+	favorited = false,
+	loading = false }) => {
+
+	const { isItemAdded } = React.useContext(AppContext);
 	const [isFavorite, setInFavorite] = React.useState(favorited);
 
 	const addClickFavorite = () => {
@@ -13,7 +23,6 @@ const Card = ({ id, title, imageUrl, price, onPlus, onFavorite, favorited = fals
 	};
 
 	const addClickPlus = () => {
-		setIsAdded(!isAdded);
 		onPlus({ id, title, imageUrl, price });
 	};
 
@@ -37,7 +46,12 @@ const Card = ({ id, title, imageUrl, price, onPlus, onFavorite, favorited = fals
 				<>
 					<img src={imageUrl} alt="" className={styleCard.card__img} />
 					<button>
-						<img onClick={addClickFavorite} src={isFavorite ? "img/Card/favorite__active.svg" : "img/Card/favorite.svg"} alt="" className={styleCard.card__favorite} />
+						<img
+							onClick={addClickFavorite}
+							src={isFavorite ? "img/Card/favorite__active.svg" : "img/Card/favorite.svg"}
+							alt=""
+							className={styleCard.card__favorite}
+						/>
 					</button>
 					<div className={styleCard.card__title}>{title}</div>
 					<div className={styleCard.card__items}>
@@ -46,7 +60,10 @@ const Card = ({ id, title, imageUrl, price, onPlus, onFavorite, favorited = fals
 							<span className={styleCard.card__num}>{price}</span>
 						</div>
 						<button onClick={addClickPlus}>
-							<img className={styleCard.card__add} src={isAdded ? "img/Card/add__active.svg" : "img/Card/add.svg"} alt="add" />
+							<img
+								className={styleCard.card__add}
+								src={isItemAdded(id) ? "img/Card/add__active.svg" : "img/Card/add.svg"}
+								alt="add" />
 						</button>
 					</div>
 				</>
